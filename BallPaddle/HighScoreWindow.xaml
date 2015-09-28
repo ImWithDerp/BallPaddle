@@ -1,0 +1,15 @@
+﻿<Window x:Class="BallPaddle.HighScoreWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BallPaddle"
+        mc:Ignorable="d"
+        Title="High Scores" Height="300" Width="300">
+    <Grid>
+        <TextBlock Name="FreePlay" HorizontalAlignment="Center" Margin="0,20,0,0" TextWrapping="Wrap" Text="Free Play" VerticalAlignment="Top"/>
+        <TextBlock Name="Survival" HorizontalAlignment="Center" Margin="0,50,0,0" TextWrapping="Wrap" Text="Survival" VerticalAlignment="Top"/>
+        <Button Content="OK" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="75" Click="OK_Click"/>
+        <Button Content="Reset" HorizontalAlignment="Right" Margin="0,0,10,10" Width="75" Height="22" VerticalAlignment="Bottom" Click="Reset_Click"/>
+    </Grid>
+</Window>

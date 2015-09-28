@@ -1,0 +1,28 @@
+﻿<Window x:Class="BallPaddle.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BallPaddle"
+        mc:Ignorable="d"
+        Title="Ball Paddler" Height="600" Width="800">
+    <Grid>
+        <TextBlock Name="m_Text_Left" />
+        <TextBlock Name="m_Text_Right" HorizontalAlignment="Right"/>
+        <Border Name="m_Border" Margin="10,35,0,0" HorizontalAlignment="Left" Width="770" Height="525" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1">
+            <Grid>
+                <Grid Name="m_MainMenu">
+                    <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="302" Margin="0,50" VerticalAlignment="Top" Width="378"/>
+                    <TextBlock HorizontalAlignment="Center" Margin="0,100,0,0" FontSize="40" TextWrapping="Wrap" Text="Select Game Mode!" VerticalAlignment="Top"/>
+                    <Button Content="Free Play" HorizontalAlignment="Center" FontSize="20"  Margin="0,200,0,0" VerticalAlignment="Top" Width="200" Click="FreePlay_Click"/>
+                    <Button Content="Survival" HorizontalAlignment="Center" FontSize="20"  Margin="0,250,0,0" VerticalAlignment="Top" Width="200" Click="Survival_Click"/>
+                    <Button Content="View High Scores" HorizontalAlignment="Center" FontSize="20"  Margin="0,400,0,0" VerticalAlignment="Top" Width="200" Click="HighScores_Click"/>
+                </Grid>
+                <Grid Name="m_GameArea" Visibility="Collapsed">
+                    <TextBlock Name="m_Text_GameOver" HorizontalAlignment="Center" Margin="0,100,0,0" FontSize="40" TextWrapping="Wrap" Text="Game Over!" VerticalAlignment="Top" Visibility="Collapsed"/>
+                    <Canvas Name="m_Canvas" />
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
