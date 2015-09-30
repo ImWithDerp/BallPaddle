@@ -6,21 +6,21 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace BallPaddle
+namespace BallPaddle.Widget
 {
     // A drawable item on the canvas
     public abstract class Widget
     {
         // Starting position
-        public double m_dStartX;
-        public double m_dStartY;
+        public double dStartX;
+        public double dStartY;
 
         // Current position
-        public double m_dPosX;
-        public double m_dPosY;
+        public double dPosX;
+        public double dPosY;
 
         // The representation of the widget
-        public FrameworkElement m_Icon;
+        public FrameworkElement icon;
 
         // Reset starting position/properties
         public abstract void Reset();
@@ -34,12 +34,12 @@ namespace BallPaddle
         // Remove from canvas
         public virtual void Destroy()
         {
-            if (m_Icon != null)
+            if (icon != null)
             {
-                if (m_Icon.Parent as Canvas != null)
-                    (m_Icon.Parent as Canvas).Children.Remove(m_Icon);
+                if (icon.Parent as Canvas != null)
+                    (icon.Parent as Canvas).Children.Remove(icon);
 
-                m_Icon = null;
+                icon = null;
             }
         }
     }

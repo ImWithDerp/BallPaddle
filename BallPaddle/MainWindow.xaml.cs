@@ -22,7 +22,7 @@ namespace BallPaddle
     {
         public static Random random = new Random();
 
-        public Mode m_CurrentMode;
+        public Modes.Mode m_CurrentMode;
 
         public MainWindow()
         {
@@ -32,22 +32,22 @@ namespace BallPaddle
         }
 
         // Return to main menu
-        public void MainMenu()
+        public void OpenMainMenu()
         {
             if (m_CurrentMode != null)
                 m_CurrentMode.EndMode();
 
-            m_GameArea.Visibility = Visibility.Collapsed;
-            m_MainMenu.Visibility = Visibility.Visible;
+            GridGameScreen.Visibility = Visibility.Collapsed;
+            GridMainMenu.Visibility = Visibility.Visible;
         }
 
         // Start the specified game mode
-        public void StartMode(Mode mode)
+        public void StartMode(Modes.Mode mode)
         {
             m_CurrentMode = mode;
 
-            m_MainMenu.Visibility = Visibility.Collapsed;
-            m_GameArea.Visibility = Visibility.Visible;
+            GridMainMenu.Visibility = Visibility.Collapsed;
+            GridGameScreen.Visibility = Visibility.Visible;
 
             mode.StartMode();
         }
@@ -58,7 +58,7 @@ namespace BallPaddle
             switch (e.Key)
             {
                 case Key.Escape:
-                    MainMenu();
+                    OpenMainMenu();
                     break;
             }
              
@@ -67,13 +67,13 @@ namespace BallPaddle
         // Start free play mode
         private void FreePlay_Click(object sender, RoutedEventArgs e)
         {
-            StartMode(new ModeFreePlay(this));
+            StartMode(new Modes.ModeFreePlay(this));
         }
 
         // Start survival mode
         private void Survival_Click(object sender, RoutedEventArgs e)
         {
-            StartMode(new ModeSurvival(this));
+            StartMode(new Modes.ModeSurvival(this));
         }
 
         // Show high scores window

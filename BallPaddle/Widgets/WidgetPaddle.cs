@@ -8,10 +8,10 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Shapes;
 
-namespace BallPaddle
+namespace BallPaddle.Widget
 {
     // The paddle players control to bounce balls
-    public class Paddle : Widget
+    public class WidgetPaddle : Widget
     {
         // Physical properties
         public double m_dWidth;
@@ -21,16 +21,16 @@ namespace BallPaddle
         public double m_dFriction;
 
         // Icon is a simple line
-        public Line m_IconLine
+        public Line IconLine
         {
             get
             {
-                return m_Icon as Line;
+                return icon as Line;
             }
 
             set
             {
-                m_Icon = value;
+                icon = value;
             }
         }
         
@@ -41,19 +41,19 @@ namespace BallPaddle
         public double m_dVelX;
 
         // Init default properties, some depend on the size of the canvas and must be specified
-        public Paddle (double dStartX, double dStartY, double dMinX, double dMaxX,
+        public WidgetPaddle (double dStartX, double dStartY, double dMinX, double dMaxX,
             double dWidth = 100.0, double dAccel = 0.5, double dDecel = 0.2, double dAngle = 0.05, double dFriction = 0.3)
         {
-            m_dStartX = dStartX;
-            m_dStartY = dStartY;
-            m_dMinX = dMinX + dWidth * 0.5;
-            m_dMaxX = dMaxX - dWidth * 0.5;
+            this.dStartX = dStartX;
+            this.dStartY = dStartY;
+            this.m_dMinX = dMinX + dWidth * 0.5;
+            this.m_dMaxX = dMaxX - dWidth * 0.5;
 
-            m_dWidth = dWidth;
-            m_dAccel = dAccel;
-            m_dDecel = dDecel;
-            m_dAngle = dAngle;
-            m_dFriction = dFriction;
+            this.m_dWidth = dWidth;
+            this.m_dAccel = dAccel;
+            this.m_dDecel = dDecel;
+            this.m_dAngle = dAngle;
+            this.m_dFriction = dFriction;
 
             Reset();
         }
@@ -61,20 +61,23 @@ namespace BallPaddle
         // Set to start
         public override void Reset()
         {
-            m_dPosX = m_dStartX;
-            m_dPosY = m_dStartY;
+            dPosX = dStartX;
+            dPosY = dStartY;
             m_dVelX = 0.0;
         }
 
         // Adjust position/velocity based on whether left key and/or right inputs are given
         public void Update(bool left, bool right)
         {
+            // Accelerate to the right, if right is pressed
             if (right)
                 m_dVelX += m_dAccel;
 
+            // Accelerate to the left, if left is pressed
             if (left)
                 m_dVelX -= m_dAccel;
-            
+
+            // Apply deceleration
             if (m_dVelX > m_dDecel)
             {
                 m_dVelX -= m_dDecel;
@@ -86,17 +89,19 @@ namespace BallPaddle
             else
                 m_dVelX = 0.0;
 
-            m_dPosX += m_dVelX;
+            // Update position
+            dPosX += m_dVelX;
 
-            if (m_dPosX > m_dMaxX)
+            // Enforce min/max bounds
+            if (dPosX > m_dMaxX)
             {
-                m_dPosX = m_dMaxX;
+                dPosX = m_dMaxX;
                 if (m_dVelX > 0)
                     m_dVelX = 0;
             }
-            else if (m_dPosX < m_dMinX)
+            else if (dPosX < m_dMinX)
             {
-                m_dPosX = m_dMinX;
+                dPosX = m_dMinX;
                 if (m_dVelX < 0)
                     m_dVelX = 0;
             }            
@@ -105,21 +110,21 @@ namespace BallPaddle
         // Create line and add to canvas
         public override void InitIcon(Canvas canvas)
         {
-            m_IconLine = new Line();
-            m_IconLine.Stroke = System.Windows.Media.Brushes.Black;
-            m_IconLine.StrokeThickness = 2.0;
+            IconLine = new Line();
+            IconLine.Stroke = System.Windows.Media.Brushes.Black;
+            IconLine.StrokeThickness = 2.0;
 
-            canvas.Children.Add(m_Icon);
+            canvas.Children.Add(icon);
             Draw();
         }
 
         // Update line location
         public override void Draw()
         {
-            m_IconLine.X1 = m_dPosX - m_dWidth * 0.5;
-            m_IconLine.X2 = m_dPosX + m_dWidth * 0.5;
+            IconLine.X1 = dPosX - m_dWidth * 0.5;
+            IconLine.X2 = dPosX + m_dWidth * 0.5;
 
-            m_IconLine.Y1 = m_IconLine.Y2 = m_dStartY;
+            IconLine.Y1 = IconLine.Y2 = dStartY;
         }
 
 

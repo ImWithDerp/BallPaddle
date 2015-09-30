@@ -7,9 +7,14 @@
         mc:Ignorable="d"
         Title="High Scores" Height="300" Width="300">
     <Grid>
-        <TextBlock Name="FreePlay" HorizontalAlignment="Center" Margin="0,20,0,0" TextWrapping="Wrap" Text="Free Play" VerticalAlignment="Top"/>
-        <TextBlock Name="Survival" HorizontalAlignment="Center" Margin="0,50,0,0" TextWrapping="Wrap" Text="Survival" VerticalAlignment="Top"/>
-        <Button Content="OK" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="75" Click="OK_Click"/>
-        <Button Content="Reset" HorizontalAlignment="Right" Margin="0,0,10,10" Width="75" Height="22" VerticalAlignment="Bottom" Click="Reset_Click"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TextBlock Name="FreePlay" Grid.Row="0" HorizontalAlignment="Center" Padding="10" TextWrapping="Wrap" Text="Free Play" VerticalAlignment="Top"/>
+        <TextBlock Name="Survival" Grid.Row="1" HorizontalAlignment="Center" Padding="10" TextWrapping="Wrap" Text="Survival" VerticalAlignment="Top"/>
+        <Button Grid.Row="2" Content="OK" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="75" Click="OK_Click"/>
+        <Button Grid.Row="2" Content="Reset" HorizontalAlignment="Right" Margin="0,0,10,10" Width="75" Height="22" VerticalAlignment="Bottom" Click="Reset_Click"/>
     </Grid>
 </Window>

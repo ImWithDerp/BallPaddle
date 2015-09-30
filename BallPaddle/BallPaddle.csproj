@@ -73,8 +73,10 @@
     <Compile Include="HighScoreWindow.xaml.cs">
       <DependentUpon>HighScoreWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Mode.cs" />
-    <Compile Include="Widget.cs" />
+    <Compile Include="Modes\Mode.cs" />
+    <Compile Include="Modes\ModeFreePlay.cs" />
+    <Compile Include="Modes\ModeSurvival.cs" />
+    <Compile Include="Widgets\Widget.cs" />
     <Page Include="HighScoreWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -87,14 +89,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Ball.cs" />
+    <Compile Include="Widgets\WidgetBall.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Paddle.cs" />
+    <Compile Include="Widgets\WidgetPaddle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -7,20 +7,32 @@
         mc:Ignorable="d"
         Title="Ball Paddler" Height="600" Width="800">
     <Grid>
-        <TextBlock Name="m_Text_Left" />
-        <TextBlock Name="m_Text_Right" HorizontalAlignment="Right"/>
-        <Border Name="m_Border" Margin="10,35,0,0" HorizontalAlignment="Left" Width="770" Height="525" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1">
+        <TextBlock Name="TextBlockLeft" />
+        <TextBlock Name="TextBlockRight" HorizontalAlignment="Right"/>
+        <Border Name="Border" Margin="10,35,0,0" HorizontalAlignment="Left" Width="770" Height="525" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1">
             <Grid>
-                <Grid Name="m_MainMenu">
-                    <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="302" Margin="0,50" VerticalAlignment="Top" Width="378"/>
-                    <TextBlock HorizontalAlignment="Center" Margin="0,100,0,0" FontSize="40" TextWrapping="Wrap" Text="Select Game Mode!" VerticalAlignment="Top"/>
-                    <Button Content="Free Play" HorizontalAlignment="Center" FontSize="20"  Margin="0,200,0,0" VerticalAlignment="Top" Width="200" Click="FreePlay_Click"/>
-                    <Button Content="Survival" HorizontalAlignment="Center" FontSize="20"  Margin="0,250,0,0" VerticalAlignment="Top" Width="200" Click="Survival_Click"/>
-                    <Button Content="View High Scores" HorizontalAlignment="Center" FontSize="20"  Margin="0,400,0,0" VerticalAlignment="Top" Width="200" Click="HighScores_Click"/>
+                <Grid Name="GridMainMenu">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="302" Margin="0,50" VerticalAlignment="Top" Width="378">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="150" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="100" />
+                            </Grid.RowDefinitions>
+                            <TextBlock HorizontalAlignment="Center" Grid.Row="0" FontSize="40" TextWrapping="Wrap" Text="Select Game Mode!" Margin="0,50,0,0" VerticalAlignment="Top"/>
+                            <Button Content="Free Play" Grid.Row="1" HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Center" Width="200" Click="FreePlay_Click"/>
+                            <Button Content="Survival" Grid.Row="2" HorizontalAlignment="Center" FontSize="20" Margin="0,0,0,50" VerticalAlignment="Bottom" Width="200" Click="Survival_Click"/>
+                        </Grid>
+                    </Border>
+                    <Button Content="View High Scores" Grid.Row="1" HorizontalAlignment="Center" FontSize="20"  VerticalAlignment="Top" Width="200" Click="HighScores_Click"/>
                 </Grid>
-                <Grid Name="m_GameArea" Visibility="Collapsed">
-                    <TextBlock Name="m_Text_GameOver" HorizontalAlignment="Center" Margin="0,100,0,0" FontSize="40" TextWrapping="Wrap" Text="Game Over!" VerticalAlignment="Top" Visibility="Collapsed"/>
-                    <Canvas Name="m_Canvas" />
+                <Grid Name="GridGameScreen" Visibility="Collapsed">
+                    <TextBlock Name="TextBlockGameOver" HorizontalAlignment="Center" Margin="0,100,0,0" FontSize="40" TextWrapping="Wrap" Text="Game Over!" VerticalAlignment="Top" Visibility="Collapsed"/>
+                    <Canvas Name="CanvasPlayArea" />
                 </Grid>
             </Grid>
         </Border>
